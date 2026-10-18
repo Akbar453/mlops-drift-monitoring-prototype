@@ -1,0 +1,283 @@
+{
+    "schemaVersion":  39,
+    "version":  1,
+    "panels":  [
+                   {
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "unit":  "short"
+                                                        },
+                                           "overrides":  [
+
+                                                         ]
+                                       },
+                       "id":  1,
+                       "gridPos":  {
+                                       "y":  0,
+                                       "w":  12,
+                                       "x":  0,
+                                       "h":  8
+                                   },
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "mlops-prometheus"
+                                      },
+                       "title":  "Total Predictions",
+                       "targets":  [
+                                       {
+                                           "legendFormat":  "Total Predictions",
+                                           "expr":  "mlops_predictions_total",
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "type":  "stat",
+                       "options":  {
+
+                                   }
+                   },
+                   {
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "unit":  "short"
+                                                        },
+                                           "overrides":  [
+
+                                                         ]
+                                       },
+                       "id":  2,
+                       "gridPos":  {
+                                       "y":  0,
+                                       "w":  12,
+                                       "x":  12,
+                                       "h":  8
+                                   },
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "mlops-prometheus"
+                                      },
+                       "title":  "Drift Alerts",
+                       "targets":  [
+                                       {
+                                           "legendFormat":  "Drift Alerts",
+                                           "expr":  "mlops_drift_alerts_total",
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "type":  "stat",
+                       "options":  {
+
+                                   }
+                   },
+                   {
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "unit":  "s"
+                                                        },
+                                           "overrides":  [
+
+                                                         ]
+                                       },
+                       "id":  3,
+                       "gridPos":  {
+                                       "y":  8,
+                                       "w":  12,
+                                       "x":  0,
+                                       "h":  8
+                                   },
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "mlops-prometheus"
+                                      },
+                       "title":  "API p95 Latency",
+                       "targets":  [
+                                       {
+                                           "legendFormat":  "API p95 Latency",
+                                           "expr":  "histogram_quantile(0.95, sum by (le) (rate(mlops_http_request_seconds_bucket[5m])))",
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "type":  "timeseries",
+                       "options":  {
+
+                                   }
+                   },
+                   {
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "unit":  "ops"
+                                                        },
+                                           "overrides":  [
+
+                                                         ]
+                                       },
+                       "id":  4,
+                       "gridPos":  {
+                                       "y":  8,
+                                       "w":  12,
+                                       "x":  12,
+                                       "h":  8
+                                   },
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "mlops-prometheus"
+                                      },
+                       "title":  "Prediction Throughput",
+                       "targets":  [
+                                       {
+                                           "legendFormat":  "Prediction Throughput",
+                                           "expr":  "rate(mlops_predictions_total[5m])",
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "type":  "timeseries",
+                       "options":  {
+
+                                   }
+                   },
+                   {
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "unit":  "decmbytes"
+                                                        },
+                                           "overrides":  [
+
+                                                         ]
+                                       },
+                       "id":  5,
+                       "gridPos":  {
+                                       "y":  16,
+                                       "w":  12,
+                                       "x":  0,
+                                       "h":  8
+                                   },
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "mlops-prometheus"
+                                      },
+                       "title":  "Application RAM",
+                       "targets":  [
+                                       {
+                                           "legendFormat":  "Application RAM",
+                                           "expr":  "process_resident_memory_bytes / 1024 / 1024",
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "type":  "timeseries",
+                       "options":  {
+
+                                   }
+                   },
+                   {
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "unit":  "percentunit"
+                                                        },
+                                           "overrides":  [
+
+                                                         ]
+                                       },
+                       "id":  6,
+                       "gridPos":  {
+                                       "y":  16,
+                                       "w":  12,
+                                       "x":  12,
+                                       "h":  8
+                                   },
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "mlops-prometheus"
+                                      },
+                       "title":  "Application CPU Rate",
+                       "targets":  [
+                                       {
+                                           "legendFormat":  "Application CPU Rate",
+                                           "expr":  "rate(process_cpu_seconds_total[5m])",
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "type":  "timeseries",
+                       "options":  {
+
+                                   }
+                   },
+                   {
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "unit":  "short"
+                                                        },
+                                           "overrides":  [
+
+                                                         ]
+                                       },
+                       "id":  7,
+                       "gridPos":  {
+                                       "y":  24,
+                                       "w":  12,
+                                       "x":  0,
+                                       "h":  8
+                                   },
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "mlops-prometheus"
+                                      },
+                       "title":  "Drift Alert Trend",
+                       "targets":  [
+                                       {
+                                           "legendFormat":  "Drift Alert Trend",
+                                           "expr":  "increase(mlops_drift_alerts_total[5m])",
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "type":  "timeseries",
+                       "options":  {
+
+                                   }
+                   },
+                   {
+                       "fieldConfig":  {
+                                           "defaults":  {
+                                                            "unit":  "short"
+                                                        },
+                                           "overrides":  [
+
+                                                         ]
+                                       },
+                       "id":  8,
+                       "gridPos":  {
+                                       "y":  24,
+                                       "w":  12,
+                                       "x":  12,
+                                       "h":  8
+                                   },
+                       "datasource":  {
+                                          "type":  "prometheus",
+                                          "uid":  "mlops-prometheus"
+                                      },
+                       "title":  "Prometheus Target Health",
+                       "targets":  [
+                                       {
+                                           "legendFormat":  "Prometheus Target Health",
+                                           "expr":  "up{job=\"mlops-api\"}",
+                                           "refId":  "A"
+                                       }
+                                   ],
+                       "type":  "stat",
+                       "options":  {
+
+                                   }
+                   }
+               ],
+    "tags":  [
+                 "mlops",
+                 "ai",
+                 "observability"
+             ],
+    "time":  {
+                 "to":  "now",
+                 "from":  "now-1h"
+             },
+    "timezone":  "browser",
+    "refresh":  "10s",
+    "title":  "MLOps | AI Observability Control Center",
+    "uid":  "mlops-observability"
+}

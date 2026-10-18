@@ -1,0 +1,26 @@
+.venv/
+__pycache__/
+.pytest_cache/
+artifacts/
+mlruns/
+mlruns.db
+*.pyc
+*.db
+.env
+
+# Local secrets
+.env.monitoring
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Runtime state and generated models
+.venv/
+artifacts/
+mlruns/
+mlruns.db
+*.db
+__pycache__/
+.pytest_cache/
+*.pyc

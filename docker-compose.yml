@@ -1,0 +1,13 @@
+services:
+  mlops-api:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      MONITOR_DB: /app/state/monitor.db
+      MLOPS_API_KEY: ${MLOPS_API_KEY:-}
+    volumes:
+      - mlops_data:/app/state
+    restart: unless-stopped
+volumes:
+  mlops_data:
